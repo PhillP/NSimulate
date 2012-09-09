@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3CD5886C-D917-427D-80D5-D72DC8523034}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NSimulate.UnitTest</RootNamespace>
+    <AssemblyName>NSimulate.UnitTest</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Instruction\WaitInstructionFixture.cs" />
+    <Compile Include="Instruction\ActivateInstructionFixture.cs" />
+    <Compile Include="Instruction\DeactivateInstructionFixture.cs" />
+    <Compile Include="Instruction\InterruptInstructionFixture.cs" />
+    <Compile Include="InstructionListTestProcess.cs" />
+    <Compile Include="Instruction\PassInstructionFixture.cs" />
+    <Compile Include="Instruction\StopSimulationInstructionFixture.cs" />
+    <Compile Include="Instruction\TerminateSimulationInstructionFixture.cs" />
+    <Compile Include="Instruction\CompositeInstructionFixture.cs" />
+    <Compile Include="Instruction\AllocateInstructionFixture.cs" />
+    <Compile Include="Instruction\ReleaseInstructionFixture.cs" />
+    <Compile Include="TestResource.cs" />
+    <Compile Include="ProcessFixture.cs" />
+    <Compile Include="ResourceFixture.cs" />
+    <Compile Include="SimulationContextFixture.cs" />
+    <Compile Include="SimulationElementFixture.cs" />
+    <Compile Include="SimulatorFixture.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Instruction\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NSimulate\NSimulate.csproj">
+      <Project>{5F40BDA4-D8FC-4D9D-8BC8-CF7A26BB2C74}</Project>
+      <Name>NSimulate</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
