@@ -12,6 +12,7 @@ namespace NSimulate.Instruction
 		/// </summary>
 		public InstructionBase()
 		{
+			Priority = Priority.Medium;
 		}
 
 		/// <summary>
@@ -58,6 +59,12 @@ namespace NSimulate.Instruction
 		/// The time period in wich the instruction completed.
 		/// </value>
 		public int? CompletedAtTimePeriod
+		{
+			get;
+			protected set;
+		}
+
+		public virtual Priority Priority
 		{
 			get;
 			protected set;

@@ -118,7 +118,17 @@ namespace NSimulate
 			if (ActiveProcesses == null){
 				ActiveProcesses = new HashSet<Process>();
 
-				foreach(var process in GetByType<Process>()){
+				// order processes by instruction and then process priority
+				var processesInPriorityOrder = GetByType<Process>()
+					.OrderBy(p=>p.Priority)
+					.ThenBy(p=>(p.SimulationState != null 
+					             && p.SimulationState.InstructionEnumerator != null 
+					             && p.SimulationState.InstructionEnumerator.Current != null)
+					         ?p.SimulationState.InstructionEnumerator.Current.Priority
+					         :Priority.Medium)
+					.ThenBy(p=>p.InstanceIndex);
+					
+				foreach(var process in processesInPriorityOrder){
 					if (process.SimulationState == null){
 						process.SimulationState = new ProcessSimulationState();
 					}

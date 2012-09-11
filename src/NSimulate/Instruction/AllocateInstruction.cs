@@ -79,6 +79,7 @@ namespace NSimulate.Instruction
 		/// </param>
 		public AllocateInstruction (int number, Func<TResource, bool> resourceMatchFunction = null, Func<TResource, int> resourcePriorityFunction = null)
 		{
+			Priority = Priority.Low; // reduce priority so that allocate is processed after any releases
 			NumberRequested = number;
 
 			if (resourceMatchFunction != null){

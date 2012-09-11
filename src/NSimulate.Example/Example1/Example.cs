@@ -76,6 +76,9 @@ namespace NSimulate.Example1
 
 			// add a repair person
 			new RepairPerson();
+
+			// add the end condition
+			new SimulationEndTrigger(()=>unprocessedJobsList.Count == 0);
 		}
 	}
 }

@@ -10,6 +10,18 @@ namespace NSimulate
 	/// </summary>
 	public class Process : SimulationElement
 	{
+		public static int nextInstanceIndex = 1;
+
+		/// <summary>
+		/// Backing field for the Priority property
+		/// </summary>
+		private Priority priority = Priority.Medium;
+
+		/// <summary>
+		/// Backing field for the instance index property
+		/// </summary>
+		private int instanceIndex = nextInstanceIndex++;
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NSimulate.Process"/> class.
 		/// </summary>
@@ -54,6 +66,23 @@ namespace NSimulate
 			set;
 		}
 
+		public Priority Priority
+		{
+			get{
+				return priority;
+			}
+			set{
+				priority = value;
+			}
+		}
+
+		public int InstanceIndex
+		{
+			get{
+				return instanceIndex;
+			}
+		}
+
 		/// <summary>
 		/// Simulate the process.
 		/// </summary>
@@ -71,4 +100,3 @@ namespace NSimulate
 		}
 	}
 }
-

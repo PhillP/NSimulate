@@ -50,6 +50,11 @@
     <Compile Include="Instruction\StopSimulationInstruction.cs" />
     <Compile Include="Instruction\TerminateSimulationInstruction.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Priority.cs" />
+    <Compile Include="Instruction\WaitConditionInstruction.cs" />
+    <Compile Include="SimulationEndTrigger.cs" />
+    <Compile Include="Instruction\WaitEventInstruction.cs" />
+    <Compile Include="Instruction\RaiseEventInstruction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

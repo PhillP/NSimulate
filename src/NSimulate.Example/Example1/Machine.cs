@@ -77,12 +77,12 @@ namespace NSimulate.Example1
 		/// </summary>
 		public override IEnumerator<InstructionBase> Simulate()
 		{
-			// while there is work in the workshop to do
-			while(_unprocessedJobsList.Count > 0){
-				// if the queue for this machine is empty
+			// while the simulation is running
+			while(true){
+				// check if the queue for this machine is empty
 				if (JobQueue.Count == 0){
-					// there is nothing to do right now
-					yield return new PassInstruction();
+					// if it is, wait until there is something in the queue
+					yield return new WaitConditionInstruction(()=>JobQueue.Count > 0);
 				}
 				else{
 					// take a job from the queue

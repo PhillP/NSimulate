@@ -1,9 +1,33 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="NSimulate\Instruction\AllocateInstruction.cs">
+    <Files>
+      <File FileName="NSimulate\Process.cs" Line="70" Column="22" />
+      <File FileName="NSimulate\AssemblyInfo.cs" Line="11" Column="22" />
+      <File FileName="NSimulate\SimulationContext.cs" Line="143" Column="9" />
+      <File FileName="NSimulate\Instruction\InstructionBase.cs" Line="15" Column="42" />
+      <File FileName="NSimulate\Instruction\ActivateInstruction.cs" Line="1" Column="1" />
+      <File FileName="NSimulate\Instruction\AllocateInstruction.cs" Line="84" Column="4" />
+      <File FileName="NSimulate\Instruction\CompositeInstruction.cs" Line="1" Column="1" />
+      <File FileName="NSimulate\Instruction\DeactivateInstruction.cs" Line="1" Column="1" />
+      <File FileName="NSimulate\Instruction\InstructionPriority.cs" Line="5" Column="33" />
+      <File FileName="NSimulate\Instruction\ReleaseInstruction.cs" Line="21" Column="4" />
+      <File FileName="NSimulate.UnitTest\Instruction\ReleaseInstructionFixture.cs" Line="48" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="NSimulate" expanded="True">
+            <Node name="Instruction" expanded="True">
+              <Node name="AllocateInstruction.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="NSimulate.Example" expanded="True" />
+          <Node name="NSimulate.UnitTest" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Instruction" expanded="True" />
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
@@ -12,7 +36,13 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True" selected="True">
+          <Node name="NSimulate.UnitTest" expanded="True">
+            <Node name="NSimulate" expanded="True">
+              <Node name="UnitTest" expanded="True" />
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
