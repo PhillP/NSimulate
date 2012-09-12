@@ -50,9 +50,9 @@ namespace NSimulate.Instruction
 					if (process.SimulationState != null 
 					    && process.SimulationState.InstructionEnumerator != null
 					    && process.SimulationState.InstructionEnumerator.Current != null
-					    && process.SimulationState.InstructionEnumerator.Current is WaitEventInstruction<TEvent>) {
+					    && process.SimulationState.InstructionEnumerator.Current is WaitNotificationInstruction) {
 
-						var waitEventInstruction = (WaitEventInstruction<TEvent>)process.SimulationState.InstructionEnumerator.Current;
+						var waitEventInstruction = (WaitNotificationInstruction)process.SimulationState.InstructionEnumerator.Current;
 
 						if (waitEventInstruction.MatchingCondition == null || waitEventInstruction.MatchingCondition(Event)){
 							waitEventInstruction.Events.Add(Event);

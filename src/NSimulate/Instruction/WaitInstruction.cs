@@ -8,9 +8,9 @@ namespace NSimulate.Instruction
 	public class WaitInstruction : InstructionBase 
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="NSimulate.HoldInstruction"/> class.
+		/// Initializes a new instance of the <see cref="NSimulate.Instruction.WaitInstruction"/> class.
 		/// </summary>
-		public WaitInstruction (int periods)
+		public WaitInstruction (long periods)
 		{
 			NumberOfPeriodsToWait = periods;
 		}
@@ -21,9 +21,9 @@ namespace NSimulate.Instruction
 		/// <value>
 		/// The number of periods to wait.
 		/// </value>
-		protected int NumberOfPeriodsToWait {
+		public long NumberOfPeriodsToWait {
 			get;
-			set;
+			protected set;
 		}
 
 		/// <summary>
@@ -38,10 +38,10 @@ namespace NSimulate.Instruction
 		/// <param name='skipFurtherChecksUntilTimePeriod'>
 		/// Output parameter used to specify a time period at which this instruction should be checked again.  This should be left null if it is not possible to determine when this instruction can complete.
 		/// </param>
-		public override bool CanComplete(SimulationContext context, out int? skipFurtherChecksUntilTimePeriod){
+		public override bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
 			bool canComplete = false;
 
-			int timePeriodToComplete = RaisedInTimePeriod + NumberOfPeriodsToWait;
+			long timePeriodToComplete = RaisedInTimePeriod + NumberOfPeriodsToWait;
 			skipFurtherChecksUntilTimePeriod = timePeriodToComplete;
 			if (context.TimePeriod >= timePeriodToComplete){
 				canComplete = true;

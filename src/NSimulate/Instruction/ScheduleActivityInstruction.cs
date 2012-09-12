@@ -1,18 +1,26 @@
 using System;
+using NSimulate;
 
 namespace NSimulate.Instruction
 {
-	/// <summary>
-	/// An instruction used to termine the simulation.
-	/// </summary>
-	/// <remarks>This instruction, when completed, marks the simulation as terminating.  The simulator terminates the simulation without relying on individual processes to stop</remarks>
-	public class TerminateSimulationInstruction : InstructionBase
+	public class ScheduleActivityInstruction : InstructionBase
 	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="NSimulate.Instruction.TerminateSimulationInstruction"/> class.
-		/// </summary>
-		public TerminateSimulationInstruction ()
+		public ScheduleActivityInstruction (Activity activity, long waitTime)
 		{
+			Activity = activity;
+			WaitTime = waitTime;
+		}
+
+		public Activity Activity
+		{
+			get;
+			private set;
+		}
+
+		public long WaitTime
+		{
+			get;
+			private set;
 		}
 
 		/// <summary>
@@ -27,13 +35,14 @@ namespace NSimulate.Instruction
 		/// <param name='skipFurtherChecksUntilTimePeriod'>
 		/// Output parameter used to specify a time period at which this instruction should be checked again.  This should be left null if it is not possible to determine when this instruction can complete.
 		/// </param>
-		public override  bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
+		public override bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
 			skipFurtherChecksUntilTimePeriod = null;
+
 			return true;
 		}
 
 		/// <summary>
-		/// Complete the instruction.  For this instruction type, this involves putting the simulation into the terminating state.
+		/// Complete the instruction.  For this instruction type, this involves interrupting a process.
 		/// </summary>
 		/// <param name='context'>
 		/// Context providing state information for the current simulation.
@@ -42,9 +51,14 @@ namespace NSimulate.Instruction
 		{
 			base.Complete(context);
 
-			context.IsSimulationTerminating = true;
+			var process = new ActivityHostProcess(Activity, WaitTime);
+			context.Register(process);
 
-			CompletedAtTimePeriod = context.TimePeriod;
+			if (context.ActiveProcesses != null){
+				// add it to te active process list
+				context.ActiveProcesses.Add(process);
+				context.ProcessesRemainingThisTimePeriod.Enqueue(process);
+			}
 		}
 	}
 }

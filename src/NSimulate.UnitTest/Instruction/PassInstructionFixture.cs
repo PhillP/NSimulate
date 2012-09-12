@@ -16,7 +16,7 @@ namespace NSimulate.UnitTest
 				context.MoveToTimePeriod(0);
 				var instruction = new PassInstruction();
 
-				int? nextTimePeriodCheck = null;
+				long? nextTimePeriodCheck = null;
 				bool canComplete = instruction.CanComplete(context, out nextTimePeriodCheck);
 
 				Assert.IsFalse(canComplete);

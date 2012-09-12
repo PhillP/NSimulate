@@ -45,7 +45,7 @@ namespace NSimulate
 		/// <value>
 		/// The time period.
 		/// </value>
-		public int TimePeriod {
+		public long TimePeriod {
 			get;
 			private set;
 		}
@@ -111,7 +111,7 @@ namespace NSimulate
 		/// <param name='timePeriod'>
 		/// Time period.
 		/// </param>
-		public void MoveToTimePeriod(int timePeriod){
+		public void MoveToTimePeriod(long timePeriod){
 
 			TimePeriod = timePeriod;
 

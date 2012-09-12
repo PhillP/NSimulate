@@ -21,7 +21,7 @@ namespace NSimulate.Instruction
 		/// <value>
 		/// The raised in time period.
 		/// </value>
-		public int RaisedInTimePeriod
+		public long RaisedInTimePeriod
 		{
 			get;
 			set;
@@ -58,7 +58,7 @@ namespace NSimulate.Instruction
 		/// <value>
 		/// The time period in wich the instruction completed.
 		/// </value>
-		public int? CompletedAtTimePeriod
+		public long? CompletedAtTimePeriod
 		{
 			get;
 			protected set;
@@ -82,7 +82,7 @@ namespace NSimulate.Instruction
 		/// <param name='skipFurtherChecksUntilTimePeriod'>
 		/// Output parameter used to specify a time period at which this instruction should be checked again.  This should be left null if it is not possible to determine when this instruction can complete.
 		/// </param>
-		public virtual bool CanComplete(SimulationContext context, out int? skipFurtherChecksUntilTimePeriod){
+		public virtual bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
 			skipFurtherChecksUntilTimePeriod = null;
 			return false;
 		}

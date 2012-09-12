@@ -17,7 +17,7 @@ namespace NSimulate.Instruction
 			set;
 		}
 
-		public override bool CanComplete(SimulationContext context, out int? skipFurtherChecksUntilTimePeriod){
+		public override bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
 			skipFurtherChecksUntilTimePeriod = null;
 
 			return Condition();

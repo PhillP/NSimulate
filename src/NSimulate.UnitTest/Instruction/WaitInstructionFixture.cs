@@ -15,11 +15,11 @@ namespace NSimulate.UnitTest
 		{
 			using (var context = new SimulationContext(isDefaultContextForProcess:true)){
 
-				int waitPeriods = 10;
+				long waitPeriods = 10;
 				var instruction = new WaitInstruction(waitPeriods);
 
 				bool canComplete = false;
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 
 				for(int i=1;i<waitPeriods;i++){
 					context.MoveToTimePeriod(i);

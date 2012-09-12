@@ -39,7 +39,7 @@ namespace NSimulate
 			bool complete = false;
 			Context.MoveToTimePeriod(0);
 
-			int? nextTimePeriod = null;
+			long? nextTimePeriod = null;
 
 			while (!complete)
 			{
@@ -79,14 +79,14 @@ namespace NSimulate
 		/// <param name='nextTimePeriod'>
 		/// The next time period in which this process should be simulated (if known)
 		/// </param>
-		private void SimulateProcessAtTimePeriod(Process process, ref int? nextTimePeriod){
+		private void SimulateProcessAtTimePeriod(Process process, ref long? nextTimePeriod){
 			bool shouldMoveNext = true;
 			while (shouldMoveNext && !Context.IsSimulationTerminating) {
 				InstructionBase currentInstruction = process.SimulationState.InstructionEnumerator.Current;
 				bool didComplete = false;
 
 				if (currentInstruction != null) {
-					int? nextTimePeriodCheck = null;
+					long? nextTimePeriodCheck = null;
 
 					if (process.SimulationState.IsInterrupted) {
 						currentInstruction.Interrupt(Context);

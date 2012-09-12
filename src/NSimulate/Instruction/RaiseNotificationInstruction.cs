@@ -3,16 +3,18 @@ using System;
 namespace NSimulate.Instruction
 {
 	/// <summary>
-	/// An instruction used to termine the simulation.
+	/// An instruction used to raise an event
 	/// </summary>
-	/// <remarks>This instruction, when completed, marks the simulation as terminating.  The simulator terminates the simulation without relying on individual processes to stop</remarks>
-	public class TerminateSimulationInstruction : InstructionBase
+	public class RaiseNotificationInstruction<TNotification> : InstructionBase
 	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="NSimulate.Instruction.TerminateSimulationInstruction"/> class.
-		/// </summary>
-		public TerminateSimulationInstruction ()
+		public RaiseNotificationInstruction (TNotification notificationToRaise)
 		{
+			Notification = notificationToRaise;
+		}
+
+		public TNotification Notification{
+			get;
+			private set;
 		}
 
 		/// <summary>
@@ -42,7 +44,22 @@ namespace NSimulate.Instruction
 		{
 			base.Complete(context);
 
-			context.IsSimulationTerminating = true;
+			// Add the event to the wait instructions of all processes currently waiting
+			if (context.ActiveProcesses != null){
+				foreach(var process in context.ActiveProcesses){
+					if (process.SimulationState != null 
+					    && process.SimulationState.InstructionEnumerator != null
+					    && process.SimulationState.InstructionEnumerator.Current != null
+					    && process.SimulationState.InstructionEnumerator.Current is WaitNotificationInstruction<TNotification>) {
+
+						var waitEventInstruction = (WaitNotificationInstruction<TNotification>)process.SimulationState.InstructionEnumerator.Current;
+
+						if (waitEventInstruction.MatchingCondition == null || waitEventInstruction.MatchingCondition(Notification)){
+							waitEventInstruction.Notifications.Add(Notification);
+						}
+					}
+				}
+			}
 
 			CompletedAtTimePeriod = context.TimePeriod;
 		}

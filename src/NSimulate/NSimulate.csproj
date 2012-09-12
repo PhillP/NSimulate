@@ -53,8 +53,11 @@
     <Compile Include="Priority.cs" />
     <Compile Include="Instruction\WaitConditionInstruction.cs" />
     <Compile Include="SimulationEndTrigger.cs" />
-    <Compile Include="Instruction\WaitEventInstruction.cs" />
-    <Compile Include="Instruction\RaiseEventInstruction.cs" />
+    <Compile Include="Instruction\WaitNotificationInstruction.cs" />
+    <Compile Include="Instruction\RaiseNotificationInstruction.cs" />
+    <Compile Include="ActivityHostProcess.cs" />
+    <Compile Include="Activity.cs" />
+    <Compile Include="Instruction\ScheduleActivityInstruction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

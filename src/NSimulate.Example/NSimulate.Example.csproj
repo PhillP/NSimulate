@@ -61,6 +61,7 @@
     <Folder Include="Example1\" />
     <Folder Include="Example2\" />
     <Folder Include="Example3\" />
+    <Folder Include="Example4\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NSimulate\NSimulate.csproj">

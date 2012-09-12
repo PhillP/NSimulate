@@ -54,9 +54,12 @@
     <Compile Include="SimulationElementFixture.cs" />
     <Compile Include="SimulatorFixture.cs" />
     <Compile Include="Instruction\WaitConditionInstructionFixture.cs" />
-    <Compile Include="TestEvent.cs" />
-    <Compile Include="Instruction\RaiseAndWaitEventInstructionFixture.cs" />
     <Compile Include="SimulationEndTriggerFixture.cs" />
+    <Compile Include="Instruction\WaitAndRaiseNotificationInstructionFixture.cs" />
+    <Compile Include="TestNotification.cs" />
+    <Compile Include="Instruction\ScheduleActivityInstructionFixture.cs" />
+    <Compile Include="ActivityHostProcessFixture.cs" />
+    <Compile Include="TestActivity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

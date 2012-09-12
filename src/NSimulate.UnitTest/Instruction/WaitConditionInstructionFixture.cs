@@ -13,7 +13,7 @@ namespace NSimulate.UnitTest
 			using (var context = new SimulationContext(isDefaultContextForProcess: true)){
 				var instruction = new WaitConditionInstruction(()=>1==2);
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = instruction.CanComplete(context, out nextTimePeriodCheck);
 				
 				Assert.IsFalse(canComplete);
@@ -27,7 +27,7 @@ namespace NSimulate.UnitTest
 			using (var context = new SimulationContext(isDefaultContextForProcess: true)){
 				var instruction = new WaitConditionInstruction(()=>1==1);
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = instruction.CanComplete(context, out nextTimePeriodCheck);
 				
 				Assert.IsTrue(canComplete);

@@ -16,7 +16,7 @@ namespace NSimulate.UnitTest
 				Assert.IsFalse(context.IsSimulationStopping);
 				var instruction = new StopSimulationInstruction();
 
-				int? nextTimePeriodCheck = null;
+				long? nextTimePeriodCheck = null;
 				bool canComplete = instruction.CanComplete(context, out nextTimePeriodCheck);
 
 				Assert.IsTrue(canComplete);

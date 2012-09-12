@@ -20,7 +20,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The call start time period.
 		/// </value>
-		public int? CallStartTimePeriod{
+		public long? CallStartTimePeriod{
 			get;
 			set;
 		}
@@ -31,7 +31,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The call level1 time period.
 		/// </value>
-		public int? CallLevel1TimePeriod{
+		public long? CallLevel1TimePeriod{
 			get;
 			set;
 		}
@@ -42,7 +42,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The call level1 end time period.
 		/// </value>
-		public int? CallLevel1EndTimePeriod{
+		public long? CallLevel1EndTimePeriod{
 			get;
 			set;
 		}
@@ -53,7 +53,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The call level2 time period.
 		/// </value>
-		public int? CallLevel2TimePeriod{
+		public long? CallLevel2TimePeriod{
 			get;
 			set;
 		}
@@ -64,7 +64,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The call level2 end time period.
 		/// </value>
-		public int? CallLevel2EndTimePeriod{
+		public long? CallLevel2EndTimePeriod{
 			get;
 			set;
 		}
@@ -75,7 +75,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The call end time period.
 		/// </value>
-		public int? CallEndTimePeriod{
+		public long? CallEndTimePeriod{
 			get;
 			set;
 		}
@@ -86,7 +86,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The time on hold before level1.
 		/// </value>
-		public int? TimeOnHoldBeforeLevel1{
+		public long? TimeOnHoldBeforeLevel1{
 			get{
 				return CalculateTimeDifference(CallStartTimePeriod, CallLevel1TimePeriod);
 			}
@@ -98,7 +98,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The time on hold before level2.
 		/// </value>
-		public int? TimeOnHoldBeforeLevel2{
+		public long? TimeOnHoldBeforeLevel2{
 			get{
 				return CalculateTimeDifference(CallLevel1EndTimePeriod, CallLevel2TimePeriod);
 			}
@@ -110,7 +110,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The time at level1.
 		/// </value>
-		public int? TimeAtLevel1{
+		public long? TimeAtLevel1{
 			get{
 				return CalculateTimeDifference(CallLevel1TimePeriod, CallLevel1EndTimePeriod);
 			}
@@ -122,7 +122,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The time at level2.
 		/// </value>
-		public int? TimeAtLevel2{
+		public long? TimeAtLevel2{
 			get{
 				return CalculateTimeDifference(CallLevel2TimePeriod, CallLevel2EndTimePeriod);
 			}
@@ -134,7 +134,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The total time on hold.
 		/// </value>
-		public int? TotalTimeOnHold{
+		public long? TotalTimeOnHold{
 			get{
 				return (TimeOnHoldBeforeLevel1 ?? 0) + (TimeOnHoldBeforeLevel2 ?? 0);
 			}
@@ -146,7 +146,7 @@ namespace NSimulate.Example2
 		/// <value>
 		/// The total time of call.
 		/// </value>
-		public int? TotalTimeOfCall{
+		public long? TotalTimeOfCall{
 			get{
 				return CalculateTimeDifference(CallStartTimePeriod, CallEndTimePeriod);
 			}
@@ -164,8 +164,8 @@ namespace NSimulate.Example2
 		/// <param name='end'>
 		/// End.
 		/// </param>
-		public int? CalculateTimeDifference(int? start, int? end){
-			int? difference = 0;
+		public long? CalculateTimeDifference(long? start, long? end){
+			long? difference = 0;
 
 			if (start != null && end != null)
 			{

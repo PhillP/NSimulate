@@ -112,16 +112,16 @@ namespace NSimulate.Example2
 		private static void OutputResults(IEnumerable<Call> calls){
 			int countOfCalls=0;
 			int countOfCallsReachingLevel2=0;
-			int totalLevel1Duration=0;
-			int totalLevel2Duration=0;
-			int totalHoldTimeBeforeLevel1=0;
-			int totalHoldTimeBeforeLevel2=0;
-			int totalCallTime=0;
-			int totalHoldTime=0;
-			int? maxHoldTimeBeforeLevel1=null;
-			int? maxHoldTimeBeforeLevel2=null;
-			int? maxTotalHoldTime=null;
-			int? maxTotalCallTime=null;
+			long totalLevel1Duration=0;
+			long totalLevel2Duration=0;
+			long totalHoldTimeBeforeLevel1=0;
+			long totalHoldTimeBeforeLevel2=0;
+			long totalCallTime=0;
+			long totalHoldTime=0;
+			long? maxHoldTimeBeforeLevel1=null;
+			long? maxHoldTimeBeforeLevel2=null;
+			long? maxTotalHoldTime=null;
+			long? maxTotalCallTime=null;
 
 			foreach(Call call in calls){
 				countOfCalls++;

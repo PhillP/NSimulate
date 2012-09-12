@@ -46,7 +46,7 @@ namespace NSimulate.Instruction
 		/// <param name='skipFurtherChecksUntilTimePeriod'>
 		/// Output parameter used to specify a time period at which this instruction should be checked again.  This should be left null if it is not possible to determine when this instruction can complete.
 		/// </param>
-		public override bool CanComplete(SimulationContext context, out int? skipFurtherChecksUntilTimePeriod){
+		public override bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
 			skipFurtherChecksUntilTimePeriod = null;
 
 			bool canComplete = true;
@@ -55,7 +55,7 @@ namespace NSimulate.Instruction
 			// iterate through all contained instructions, check whether they can all complete
 			// the value returned in skipFurtherChecksUntilTimePeriod is the lowest value of any instrution, and null if any return null for this value
 			foreach(InstructionBase instruction in _instructions){
-				int? nextCheckTimePeriod = null;
+				long? nextCheckTimePeriod = null;
 
 				bool thisInstructionCanComplete = instruction.CanComplete(context, out nextCheckTimePeriod);
 

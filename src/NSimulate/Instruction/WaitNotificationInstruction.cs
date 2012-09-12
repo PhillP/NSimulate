@@ -1,22 +1,29 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace NSimulate.Instruction
 {
 	/// <summary>
-	/// An instruction used to pass control from a process back to the simulator without performing any other action
+	/// An instruction that causes a process to wait until an event is fired
 	/// </summary>
-	public class PassInstruction : InstructionBase
+	public class WaitNotificationInstruction<TNotification> : InstructionBase
 	{
-		/// <summary>
-		/// Flag used to record whether the pass instruction has been used
-		/// </summary>
-		bool _hasPassed = false;
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="NSimulate.Instruction.PassInstruction"/> class.
-		/// </summary>
-		public PassInstruction ()
+		public WaitNotificationInstruction (Func<TNotification, bool> matchingCondition = null)
 		{
+			Priority = NSimulate.Priority.Low;
+			MatchingCondition = matchingCondition;
+			Notifications = new List<TNotification>();
+		}
+
+		public List<TNotification> Notifications{
+			get;
+			private set;
+		}
+
+		public Func<TNotification, bool> MatchingCondition {
+			get;
+			private set;
 		}
 
 		/// <summary>
@@ -34,10 +41,10 @@ namespace NSimulate.Instruction
 		public override  bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
 			skipFurtherChecksUntilTimePeriod = null;
 
-			bool canComplete = _hasPassed;
+			bool canComplete = false;
 
-			if(!_hasPassed){
-				_hasPassed = true;
+			if (Notifications != null && Notifications.Count > 0){
+				canComplete = true;
 			}
 
 			return canComplete;

@@ -27,7 +27,7 @@ namespace NSimulate.UnitTest
 
 				var instruction = new ActivateInstruction(testProcess);
 
-				int? nextTimePeriodCheck = null;
+				long? nextTimePeriodCheck = null;
 				bool canComplete = instruction.CanComplete(context, out nextTimePeriodCheck);
 
 				Assert.IsTrue(canComplete);

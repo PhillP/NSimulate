@@ -30,7 +30,7 @@ namespace NSimulate.Example3
 		/// <value>
 		/// The wait time.
 		/// </value>
-		public int WaitTime{
+		public long WaitTime{
 			get;
 			private set;
 		}
@@ -41,7 +41,7 @@ namespace NSimulate.Example3
 		/// <value>
 		/// The busy time.
 		/// </value>
-		public int BusyTime{
+		public long BusyTime{
 			get;
 			private set;
 		}
@@ -63,7 +63,7 @@ namespace NSimulate.Example3
 		/// <value>
 		/// The latest delivery time.
 		/// </value>
-		public int LatestDeliveryTime{
+		public long LatestDeliveryTime{
 			get;
 			private set;
 		}
@@ -75,7 +75,7 @@ namespace NSimulate.Example3
 		{
 			var inventory = Context.GetByType<WarehouseInventory>().First();
 
-			int waitStart = Context.TimePeriod;
+			long waitStart = Context.TimePeriod;
 
 			while(_orderQueue.Count >0)
 			{

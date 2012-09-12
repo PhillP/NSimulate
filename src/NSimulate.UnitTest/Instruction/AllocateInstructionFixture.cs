@@ -22,7 +22,7 @@ namespace NSimulate.UnitTest
 				// try to allocate one more than the total resources
 				var allocateInstruction = new AllocateInstruction<TestResource>(resouceCapacity + 1);
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = allocateInstruction.CanComplete(context, out nextTimePeriodCheck);
 
 				// allocation not possilbe
@@ -65,7 +65,7 @@ namespace NSimulate.UnitTest
 				// request a number that will use 1 and 1/2 of the resource sets
 				var allocateInstruction = new AllocateInstruction<TestResource>((int)(resouceCapacity * 1.5), resourcePriorityFunction: (r)=>r.Priority);
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = allocateInstruction.CanComplete(context, out nextTimePeriodCheck);
 
 				// allocation should be possible
@@ -107,7 +107,7 @@ namespace NSimulate.UnitTest
 					resourcePriorityFunction: (r)=>r.Priority, 
 				    resourceMatchFunction: (r)=>r.Code != "First");
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = allocateInstruction.CanComplete(context, out nextTimePeriodCheck);
 
 				// allocation should be possible

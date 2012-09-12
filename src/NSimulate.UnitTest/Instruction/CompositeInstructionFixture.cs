@@ -34,7 +34,7 @@ namespace NSimulate.UnitTest
 				set;
 			}
 
-			public override bool CanComplete (SimulationContext context, out int? skipFurtherChecksUntilTimePeriod)
+			public override bool CanComplete (SimulationContext context, out long? skipFurtherChecksUntilTimePeriod)
 			{
 				HasCanCompleteBeenCalled = true;
 
@@ -62,7 +62,7 @@ namespace NSimulate.UnitTest
 				var compositeInstruction = new CompositeInstruction(testInstructions.Cast<InstructionBase>().ToList());
 
 				// when all contained instructions can complete, the composite instruction cancomplete call returns true
-				int? nextTimePeriodCheck = null;
+				long? nextTimePeriodCheck = null;
 				bool canComplete = compositeInstruction.CanComplete(context, out nextTimePeriodCheck);
 				Assert.IsTrue(canComplete);
 				Assert.IsNull(nextTimePeriodCheck);

@@ -30,7 +30,7 @@ namespace NSimulate.UnitTest
 
 				var releaseInstruction = new ReleaseInstruction<TestResource>(allocateInstruction);
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = releaseInstruction.CanComplete(context, out nextTimePeriodCheck);
 
 				Assert.IsTrue(canComplete);
