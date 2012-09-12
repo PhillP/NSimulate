@@ -25,6 +25,7 @@ namespace NSimulate.Example
 				Console.WriteLine("      1:  Workshop with unreliable machines");
 				Console.WriteLine("      2:  Call center");
 				Console.WriteLine("      3:  Order delivery with warehouse reorder");
+				Console.WriteLine("      4:  Alarm Cklock");
 				Console.WriteLine("      Q:  Quit");
 
 				var keyInfo = Console.ReadKey(true);
@@ -39,6 +40,9 @@ namespace NSimulate.Example
 						break;
 					case "3":
 						Example3.Example.Run();
+						break;
+					case "4":
+						Example4.Example.Run();
 						break;
 					case "Q":
 					    skipLastCharacterExit = true;
