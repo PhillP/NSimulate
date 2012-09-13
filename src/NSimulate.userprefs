@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="NSimulate.Example\Example3\Example.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NSimulate.Example\Example4\SleepingProcess.cs">
     <Files>
       <File FileName="NSimulate\Instruction\RaiseNotificationInstruction.cs" Line="58" Column="42" />
       <File FileName="NSimulate\Instruction\WaitNotificationInstruction.cs" Line="14" Column="38" />
@@ -29,17 +29,28 @@
       <File FileName="NSimulate.UnitTest\Instruction\InterruptInstructionFixture.cs" Line="15" Column="4" />
       <File FileName="NSimulate.UnitTest\ProcessFixture.cs" Line="23" Column="5" />
       <File FileName="NSimulate.UnitTest\TestActivity.cs" Line="4" Column="34" />
-      <File FileName="NSimulate.Example\Example3\Example.cs" Line="1" Column="1" />
+      <File FileName="NSimulate.Example\Example3\Example.cs" Line="27" Column="5" />
+      <File FileName="NSimulate.Example\Example4\Example.cs" Line="31" Column="5" />
+      <File FileName="NSimulate.Example\Example1\Example.cs" Line="32" Column="4" />
+      <File FileName="NSimulate.Example\Example4\AlarmSettingProcess.cs" Line="5" Column="1" />
+      <File FileName="NSimulate.Example\Example4\SleepingProcess.cs" Line="15" Column="124" />
+      <File FileName="NSimulate.Example\Example4\AlarmActivity.cs" Line="12" Column="88" />
+      <File FileName="NSimulate.Example\Example4\AlarmRingingNotification.cs" Line="3" Column="29" />
+      <File FileName="NSimulate.Example\Example4\AwakeNotification.cs" Line="3" Column="29" />
+      <File FileName="NSimulate.Example\Main.cs" Line="45" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="NSimulate" expanded="True">
             <Node name="References" expanded="True" />
             <Node name="Instruction" expanded="True" />
           </Node>
           <Node name="NSimulate.Example" expanded="True">
-            <Node name="Example3" expanded="True" />
+            <Node name="Example1" expanded="True" />
+            <Node name="Example4" expanded="True">
+              <Node name="SleepingProcess.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -50,13 +61,7 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True">
-          <Node name="NSimulate.UnitTest" expanded="True">
-            <Node name="NSimulate" expanded="True">
-              <Node name="UnitTest" expanded="True" />
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
