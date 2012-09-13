@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="NSimulate : A discrete-event simulation library for .NET" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>NSimulate</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/PhillP/NSimulate">View on GitHub</a>
+
+          <h1 id="project_title">NSimulate</h1>
+          <h2 id="project_tagline">A discrete-event simulation library for .NET</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/PhillP/NSimulate/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/PhillP/NSimulate/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>NSimulate</h3>
+
+<p>NSimulate is a .NET library written in C# that enables the development of discrent-event simulations.  The approach used by the library can be summarised as follows:</p>
+
+<ul>
+<li>Each actor within the simulation is represented as a Process.</li>
+<li>Processes perform work, and each item of work is represented by an Instruction.</li>
+<li>The completion of each instruction is an event that changes the state of the simulation.</li>
+<li>The progress of the simulation is regulated by a Simulator.</li>
+<li>A SimulationContext is used to make shared data available across the simulation.</li>
+</ul><h3>Guide</h3>
+
+<p>The NSimulate guide can be read <a href="./guide/index.html">here</a></p>
+
+<h3>Examples</h3>
+
+<p>The following examples are provided to illustrate the usage and capabilities of the library.</p>
+
+<ul>
+<li><a href="./example/workshop.html">Workshop with unreliable machines</a></li>
+<li><a href="./example/callcenter.html">Call Center with call escalation</a></li>
+<li><a href="./example/orderdelivery.html">Order delivery with warehouse reorder</a></li>
+</ul><h3>License and Usage</h3>
+
+<p>NSimulate is available based on an MIT style license.  It can be used for commercial and non-commercial use.  The license can be read <a href="./LICENCE.txt">here</a>.</p>
+
+<h3>Feedback</h3>
+
+<p>If you are using NSimulate, any feedback or suggestions are welcome. <a href="https://github.com/PhillP" class="user-mention">@PhillP</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">NSimulate maintained by <a href="https://github.com/PhillP">PhillP</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-34795899-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
