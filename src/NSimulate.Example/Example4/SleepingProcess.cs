@@ -10,7 +10,7 @@ namespace NSimulate.Example4
 		{
 			Console.WriteLine(string.Format("Going to sleep at time period {0}", Context.TimePeriod));
 			// wait till the alarm rings
-			yield return new WaitNotificationInstruction<AlarmRingingNotification>();
+				
 
 			Console.WriteLine(string.Format("Alarm ringing..still sleepy...hit snooze and going back to sleep at time period {0}", Context.TimePeriod));
 

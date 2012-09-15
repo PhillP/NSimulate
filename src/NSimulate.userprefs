@@ -1,12 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="NSimulate.Example\Example4\SleepingProcess.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NSimulate.UnitTest\SimulationEndTriggerFixture.cs">
     <Files>
       <File FileName="NSimulate\Instruction\RaiseNotificationInstruction.cs" Line="58" Column="42" />
       <File FileName="NSimulate\Instruction\WaitNotificationInstruction.cs" Line="14" Column="38" />
       <File FileName="NSimulate.UnitTest\Instruction\WaitAndRaiseNotificationInstructionFixture.cs" Line="78" Column="48" />
       <File FileName="NSimulate\ActivityHostProcess.cs" Line="39" Column="5" />
-      <File FileName="NSimulate\Activity.cs" Line="13" Column="3" />
+      <File FileName="NSimulate\Activity.cs" Line="20" Column="3" />
       <File FileName="NSimulate\Priority.cs" Line="1" Column="1" />
       <File FileName="NSimulate\Process.cs" Line="92" Column="4" />
       <File FileName="NSimulate\SimulationContext.cs" Line="116" Column="14" />
@@ -16,42 +16,39 @@
       <File FileName="NSimulate.Example\Example2\CallStatistics.cs" Line="168" Column="8" />
       <File FileName="c:\Development\github\NSimulate\src\NSimulate\Instruction\WaitInstruction.cs" Line="26" Column="14" />
       <File FileName="c:\Development\github\NSimulate\src\NSimulate.Example\Example2\Example.cs" Line="124" Column="8" />
-      <File FileName="c:\Development\github\NSimulate\src\NSimulate.Example\Example3\DeliveryPerson.cs" Line="53" Column="14" />
+      <File FileName="c:\Development\github\NSimulate\src\NSimulate.Example\Example3\DeliveryPerson.cs" Line="94" Column="7" />
       <File FileName="c:\Development\github\NSimulate\src\NSimulate.UnitTest\Instruction\WaitInstructionFixture.cs" Line="19" Column="23" />
       <File FileName="c:\Development\github\NSimulate\src\NSimulate.UnitTest\Instruction\ActivateInstructionFixture.cs" Line="32" Column="5" />
       <File FileName="NSimulate.UnitTest\TestNotification.cs" Line="7" Column="26" />
       <File FileName="NSimulate\SimulationEndTrigger.cs" Line="33" Column="4" />
       <File FileName="NSimulate\Instruction\ScheduleActivityInstruction.cs" Line="60" Column="63" />
       <File FileName="NSimulate\Instruction\InterruptInstruction.cs" Line="69" Column="4" />
-      <File FileName="NSimulate\Instruction\ActivateInstruction.cs" Line="63" Column="43" />
+      <File FileName="NSimulate\Instruction\ActivateInstruction.cs" Line="11" Column="1" />
       <File FileName="NSimulate.UnitTest\Instruction\ScheduleActivityInstructionFixture.cs" Line="12" Column="3" />
       <File FileName="NSimulate.UnitTest\ActivityHostProcessFixture.cs" Line="46" Column="1" />
       <File FileName="NSimulate.UnitTest\Instruction\InterruptInstructionFixture.cs" Line="15" Column="4" />
       <File FileName="NSimulate.UnitTest\ProcessFixture.cs" Line="23" Column="5" />
       <File FileName="NSimulate.UnitTest\TestActivity.cs" Line="4" Column="34" />
-      <File FileName="NSimulate.Example\Example3\Example.cs" Line="27" Column="5" />
-      <File FileName="NSimulate.Example\Example4\Example.cs" Line="31" Column="5" />
+      <File FileName="NSimulate.Example\Example3\Example.cs" Line="17" Column="53" />
+      <File FileName="NSimulate.Example\Example4\Example.cs" Line="33" Column="5" />
       <File FileName="NSimulate.Example\Example1\Example.cs" Line="32" Column="4" />
       <File FileName="NSimulate.Example\Example4\AlarmSettingProcess.cs" Line="5" Column="1" />
-      <File FileName="NSimulate.Example\Example4\SleepingProcess.cs" Line="15" Column="124" />
-      <File FileName="NSimulate.Example\Example4\AlarmActivity.cs" Line="12" Column="88" />
+      <File FileName="NSimulate.Example\Example4\SleepingProcess.cs" Line="18" Column="77" />
+      <File FileName="NSimulate.Example\Example4\AlarmActivity.cs" Line="11" Column="54" />
       <File FileName="NSimulate.Example\Example4\AlarmRingingNotification.cs" Line="3" Column="29" />
       <File FileName="NSimulate.Example\Example4\AwakeNotification.cs" Line="3" Column="29" />
       <File FileName="NSimulate.Example\Main.cs" Line="45" Column="15" />
+      <File FileName="NSimulate.Example\Example3\Address.cs" Line="1" Column="1" />
+      <File FileName="NSimulate.Example\Example1\Machine.cs" Line="121" Column="3" />
+      <File FileName="NSimulate.Example\Example2\Call.cs" Line="74" Column="107" />
+      <File FileName="NSimulate.Example\Example2\Level1CallCenterStaffMember.cs" Line="17" Column="3" />
+      <File FileName="NSimulate.UnitTest\SimulationEndTriggerFixture.cs" Line="22" Column="76" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="NSimulate" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Instruction" expanded="True" />
-          </Node>
-          <Node name="NSimulate.Example" expanded="True">
-            <Node name="Example1" expanded="True" />
-            <Node name="Example4" expanded="True">
-              <Node name="SleepingProcess.cs" selected="True" />
-            </Node>
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="NSimulate" expanded="True" />
+          <Node name="NSimulate.UnitTest" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
