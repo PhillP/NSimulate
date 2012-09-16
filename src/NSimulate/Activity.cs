@@ -6,7 +6,7 @@ namespace NSimulate
 {
 	public class Activity
 	{
-		public Activity ()
+		public Activity()
 		{
 		}
 

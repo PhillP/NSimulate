@@ -11,6 +11,7 @@ namespace NSimulate.Example1
 	/// </summary>
 	public class Machine : Process
 	{
+		private Random _random = null;
 		private List<Job> _unprocessedJobsList = null;
 
 		/// <summary>
@@ -30,7 +31,7 @@ namespace NSimulate.Example1
 		/// <value>
 		/// The reliability percentage.
 		/// </value>
-		public decimal ReliabilityPercentage {
+		public double ReliabilityPercentage {
 			get;
 			private set;
 		}
@@ -42,6 +43,28 @@ namespace NSimulate.Example1
 		/// The repair time required.
 		/// </value>
 		public int RepairTimeRequired {
+			get;
+			private set;
+		}
+
+		/// <summary>
+		/// Gets the processed count.
+		/// </summary>
+		/// <value>
+		/// The processed count.
+		/// </value>
+		public int ProcessedCount{
+			get;
+			private set;
+		}
+
+		/// <summary>
+		/// Gets the count of breakdowns
+		/// </summary>
+		/// <value>
+		/// The breakdown count.
+		/// </value>
+		public int BreakdownCount{
 			get;
 			private set;
 		}
@@ -62,13 +85,16 @@ namespace NSimulate.Example1
 		/// Unprocessed jobs list.
 		/// </param>
 		public Machine(Queue<Job> jobQueue, 
-		               decimal reliabilityPercentage,
+		               double reliabilityPercentage,
 		               int repairTimeRequired,
-		               List<Job> unprocessedJobsList)
+		               List<Job> unprocessedJobsList,
+		               Random random)
 			: base()
 		{
+			_random = random;
 			JobQueue = jobQueue;
 			ReliabilityPercentage = reliabilityPercentage;
+			RepairTimeRequired = repairTimeRequired;
 			_unprocessedJobsList = unprocessedJobsList;
 		}
 
@@ -94,6 +120,7 @@ namespace NSimulate.Example1
 
 					// use the reliability indicator to determine if the machine is broken down
 					if (CheckForRandomBreakdown()){
+						BreakdownCount++;
 						// the machine has broken down
 						// add the job it was processing back to the queue
 						JobQueue.Enqueue(jobToProcess);
@@ -107,8 +134,10 @@ namespace NSimulate.Example1
 
 						// then release the repair person resource
 						yield return new ReleaseInstruction<RepairPerson>(allocateInstruction);
+
 					}
 					else{
+						ProcessedCount++;
 						// record the fact that the job has been processed by this machine type
 						jobToProcess.ProcessingTimeRequiredByJobQueue.Remove(JobQueue);
 
@@ -127,10 +156,9 @@ namespace NSimulate.Example1
 		}
 
 		public bool CheckForRandomBreakdown(){
-			var random = new Random();
 			bool isBrokenDown = false;
 
-			int randomPercentage = (int)(random.NextDouble() * 100);
+			var randomPercentage = _random.NextDouble() * 100;
 
 			if (randomPercentage > ReliabilityPercentage){
 				isBrokenDown = true;

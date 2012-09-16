@@ -118,17 +118,9 @@ namespace NSimulate
 			if (ActiveProcesses == null){
 				ActiveProcesses = new HashSet<Process>();
 
-				// order processes by instruction and then process priority
-				var processesInPriorityOrder = GetByType<Process>()
-					.OrderBy(p=>p.Priority)
-					.ThenBy(p=>(p.SimulationState != null 
-					             && p.SimulationState.InstructionEnumerator != null 
-					             && p.SimulationState.InstructionEnumerator.Current != null)
-					         ?p.SimulationState.InstructionEnumerator.Current.Priority
-					         :Priority.Medium)
-					.ThenBy(p=>p.InstanceIndex);
-					
-				foreach(var process in processesInPriorityOrder){
+				var processes = GetByType<Process>();
+
+				foreach(var process in processes){
 					if (process.SimulationState == null){
 						process.SimulationState = new ProcessSimulationState();
 					}
@@ -139,8 +131,18 @@ namespace NSimulate
 				}
 			}
 
+			// order processes by instruction and then process priority
+			var processesInPriorityOrder = ActiveProcesses
+					.OrderBy(p=>p.Priority)
+					.ThenBy(p=>(p.SimulationState != null 
+					             && p.SimulationState.InstructionEnumerator != null 
+					             && p.SimulationState.InstructionEnumerator.Current != null)
+					         ?p.SimulationState.InstructionEnumerator.Current.Priority
+					         :Priority.Medium)
+					.ThenBy(p=>p.InstanceIndex);
+
 			ProcessesRemainingThisTimePeriod = new Queue<Process>();
-			foreach(var process in ActiveProcesses){
+			foreach(var process in processesInPriorityOrder){
 				ProcessesRemainingThisTimePeriod.Enqueue(process);
 			}
 			ProcessedProcesses = new HashSet<Process>();

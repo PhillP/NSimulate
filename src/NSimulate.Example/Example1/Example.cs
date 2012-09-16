@@ -19,7 +19,7 @@ namespace NSimulate.Example1
 			using (var context = new SimulationContext(isDefaultContextForProcess: true))
 			{
 				// initialise the model
-				CreateModel(numberOfJobs: 500);
+				var machines = CreateModel(context: context, numberOfJobs: 500);
 
 				// instantate a new simulator
 				var simulator = new Simulator();
@@ -28,6 +28,12 @@ namespace NSimulate.Example1
 				simulator.Simulate();
 
 				Console.WriteLine("Jobs processed in {0} minutes", context.TimePeriod);
+
+				int index = 1;
+				foreach(var machine in machines){
+					Console.WriteLine("Machine {0} processed {1} jobs and had {2} breakdowns.", index, machine.ProcessedCount, machine.BreakdownCount);
+					index++;
+				}
 			}
 		}
 
@@ -37,7 +43,7 @@ namespace NSimulate.Example1
 		/// <param name='numberOfJobs'>
 		/// Number of jobs to be generated.
 		/// </param>
-		private static void CreateModel(int numberOfJobs){
+		private static List<Machine> CreateModel(SimulationContext context, int numberOfJobs){
 
 			var rand = new Random();
 
@@ -49,14 +55,22 @@ namespace NSimulate.Example1
 			var workTypeCJobQueue = new Queue<Job>();
 			var workQueues = new List<Queue<Job>>(){ workTypeAJobQueue, workTypeBJobQueue, workTypeCJobQueue };
 
+			var random = new Random();
 			// create machines
-			var machine1 = new Machine(jobQueue: workTypeAJobQueue, reliabilityPercentage: 95.0m, repairTimeRequired: 15, unprocessedJobsList: unprocessedJobsList);
-			var machine2 = new Machine(jobQueue: workTypeAJobQueue, reliabilityPercentage: 80.0m, repairTimeRequired: 22, unprocessedJobsList: unprocessedJobsList);
+			var machine1 = new Machine(jobQueue: workTypeAJobQueue, reliabilityPercentage: 95.0, repairTimeRequired: 15, unprocessedJobsList: unprocessedJobsList, random: random);
+			var machine2 = new Machine(jobQueue: workTypeAJobQueue, reliabilityPercentage: 85.0, repairTimeRequired: 22, unprocessedJobsList: unprocessedJobsList, random: random);
+			var machine3 = new Machine(jobQueue: workTypeBJobQueue, reliabilityPercentage: 99.0, repairTimeRequired: 15, unprocessedJobsList: unprocessedJobsList, random: random);
+			var machine4 = new Machine(jobQueue: workTypeBJobQueue, reliabilityPercentage: 96.0, repairTimeRequired: 17, unprocessedJobsList: unprocessedJobsList, random: random);
+			var machine5 = new Machine(jobQueue: workTypeCJobQueue, reliabilityPercentage: 98.0, repairTimeRequired: 20, unprocessedJobsList: unprocessedJobsList, random: random);
 
-			var machine3 = new Machine(jobQueue: workTypeBJobQueue, reliabilityPercentage: 99.0m, repairTimeRequired: 15, unprocessedJobsList: unprocessedJobsList);
-			var machine4 = new Machine(jobQueue: workTypeBJobQueue, reliabilityPercentage: 35.0m, repairTimeRequired: 25, unprocessedJobsList: unprocessedJobsList);
-
-			var machine5 = new Machine(jobQueue: workTypeCJobQueue, reliabilityPercentage: 90.0m, repairTimeRequired: 45, unprocessedJobsList: unprocessedJobsList);
+			var machines = new List<Machine>()
+			{
+				machine1,
+				machine2,
+				machine3,
+				machine4,
+				machine5
+			};
 
 			// create the jobs
 			for (int i = 0; i< numberOfJobs;i++){
@@ -75,10 +89,12 @@ namespace NSimulate.Example1
 			}
 
 			// add a repair person
-			new RepairPerson();
+			new RepairPerson() { Capacity = 1};
 
 			// add the end condition
 			new SimulationEndTrigger(()=>unprocessedJobsList.Count == 0);
+
+			return machines;
 		}
 	}
 }
