@@ -1,6 +1,13 @@
 {
     "version": "0.85.0-*",
-    "compilationOptions": {
+    "authors": ["Phillip Pettit"],
+	"description": "NSimulate is a .NET library written in C# that enables the development of discrent-event simulations. The library enables the modelling of processes, scheduled activities, notifications and resources.",
+	"copyright": "Phillip Pettit 2012-2016",
+	"projectUrl":"http://phillp.github.io/NSimulate/",
+	"licenseUrl":"https://github.com/PhillP/NSimulate/wiki/License",
+	"tags":["Simuation","DES","Discrete Event"],
+	"title":"NSimulate - Discrete Event Simulation in .NET",
+	"compilationOptions": {
         "emitEntryPoint": false
     },
 
@@ -9,6 +16,7 @@
     },
 
     "frameworks": {
-        "dnxcore50": { }
+        "dnxcore50": { },
+		"dnxcore451": { }
     }
 }
