@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace NSimulate
 {
@@ -173,7 +174,7 @@ namespace NSimulate
 		/// </summary>
 		public void Register(Type typeToRegister, object objectToRegister)
 		{
-			if (!typeToRegister.IsSubclassOf(typeof(SimulationElement)))
+			if (!IsTypeEqualOrSubclass(typeToRegister, typeof(SimulationElement)))
 			{
 				throw new ArgumentException("typeToRegister");
 			}
@@ -209,7 +210,7 @@ namespace NSimulate
 			SimulationElement objectToRetrieve = null;
 
 			foreach(var entry  in _registeredElements) {
-				if (entry.Key == typeof(TType) || entry.Key.IsSubclassOf(typeof(TType))){
+				if (IsTypeEqualOrSubclass(entry.Key, typeof(TType))) {
 					if (entry.Value.TryGetValue(key, out objectToRetrieve)){
 						break;
 					}
@@ -233,7 +234,7 @@ namespace NSimulate
 			List<TType> enumerableToReturn = new List<TType>();
 
 			foreach(var entry  in _registeredElements) {
-				if (entry.Key == typeof(TType) || entry.Key.IsSubclassOf(typeof(TType))){
+				if (IsTypeEqualOrSubclass(entry.Key, typeof(TType))){
 					enumerableToReturn.AddRange(entry.Value.Values.Cast<TType>());
 				}
 			}
@@ -260,6 +261,34 @@ namespace NSimulate
 				SimulationContext.Current = null;
 			}
 		}
+        
+        /// <summary>
+        /// Tests whether a Type is the same as another, or the subclass of another
+        /// </summary>
+        /// <param name='typeToCheck'>
+		/// The type to be checked
+		/// </param>
+		/// <param name='typeToCompare'>
+        /// The type to match, either exactly or as an ancestor
+        /// </param>
+        /// <returns>True if the typeToCheck is the same or a subclass of the typeToCompare</returns>
+        private bool IsTypeEqualOrSubclass(Type typeToCheck, Type typeToCompare){
+            bool match = false;
+            
+            Type currentType = typeToCheck;
+            
+            while (currentType != null){
+            
+                if (currentType == typeToCompare){
+                    match = true;
+                    break;
+                }
+                
+                currentType = currentType.GetTypeInfo().BaseType;  
+            }
+            
+            return match;
+        }
 	}
 }
 

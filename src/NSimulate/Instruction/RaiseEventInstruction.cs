@@ -29,7 +29,7 @@ namespace NSimulate.Instruction
 		/// <param name='skipFurtherChecksUntilTimePeriod'>
 		/// Output parameter used to specify a time period at which this instruction should be checked again.  This should be left null if it is not possible to determine when this instruction can complete.
 		/// </param>
-		public override  bool CanComplete(SimulationContext context, out int? skipFurtherChecksUntilTimePeriod){
+		public override  bool CanComplete(SimulationContext context, out long? skipFurtherChecksUntilTimePeriod){
 			skipFurtherChecksUntilTimePeriod = null;
 			return true;
 		}
@@ -50,9 +50,9 @@ namespace NSimulate.Instruction
 					if (process.SimulationState != null 
 					    && process.SimulationState.InstructionEnumerator != null
 					    && process.SimulationState.InstructionEnumerator.Current != null
-					    && process.SimulationState.InstructionEnumerator.Current is WaitNotificationInstruction) {
+					    && process.SimulationState.InstructionEnumerator.Current is WaitEventInstruction<TEvent>) {
 
-						var waitEventInstruction = (WaitNotificationInstruction)process.SimulationState.InstructionEnumerator.Current;
+						var waitEventInstruction = (WaitEventInstruction<TEvent>)process.SimulationState.InstructionEnumerator.Current;
 
 						if (waitEventInstruction.MatchingCondition == null || waitEventInstruction.MatchingCondition(Event)){
 							waitEventInstruction.Events.Add(Event);

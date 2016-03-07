@@ -23,7 +23,7 @@ namespace NSimulate.UnitTest
 				var testEvent = new TestEvent();
 				var raiseInstruction = new RaiseEventInstruction<TestEvent>(testEvent);
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = waitInstruction.CanComplete(context, out nextTimePeriodCheck);
 
 				Assert.IsFalse(canComplete);
@@ -55,7 +55,7 @@ namespace NSimulate.UnitTest
 				var testEvent2 = new TestEvent() { Data = 1 };
 				var raiseInstruction2 = new RaiseEventInstruction<TestEvent>(testEvent2);
 
-				int? nextTimePeriodCheck;
+				long? nextTimePeriodCheck;
 				bool canComplete = waitInstruction.CanComplete(context, out nextTimePeriodCheck);
 				
 				Assert.IsFalse(canComplete);

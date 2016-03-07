@@ -1,0 +1,17 @@
+{
+    "version": "0.85.0-*",
+    "compilationOptions": {
+        "emitEntryPoint": true
+    },
+
+    "dependencies": {
+        "NETStandard.Library": "1.0.0-rc2-23811",
+        "NSimulate": "0.85.0",
+        "NUnit": "3.2.0",
+        "NUnitLite": "3.2.0"
+    },
+
+    "frameworks": {
+        "dnxcore50": { }
+    }
+}

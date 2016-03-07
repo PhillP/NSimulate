@@ -1,0 +1,6 @@
+{
+  "projects": [ "NSimulate", "NSimulate.Example", "NSimulate.UnitTest" ],
+  "sdk": {
+    "version": "1.0.0-rc2-23811"
+  }
+}
