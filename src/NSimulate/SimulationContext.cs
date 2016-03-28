@@ -11,7 +11,10 @@ namespace NSimulate
 	public class SimulationContext : IDisposable
 	{
 		private static SimulationContext _current;
-
+        
+        [ThreadStatic]
+        private static SimulationContext _currentForThread;
+        
 		private Dictionary<Type, Dictionary<object, SimulationElement>> _registeredElements = new Dictionary<Type, Dictionary<object, SimulationElement>>();
 
 		/// <summary>
@@ -24,11 +27,7 @@ namespace NSimulate
 		{
 			get
 			{
-				return _current;
-			}
-			private set
-			{
-				_current = value;
+				return _currentForThread ?? _current;
 			}
 		}
 
@@ -132,15 +131,16 @@ namespace NSimulate
 				}
 			}
 
-			// order processes by instruction and then process priority
+			// order processes by process priority, instruction priority, insruction raise time, and then process instance
 			var processesInPriorityOrder = ActiveProcesses
 					.OrderBy(p=>p.Priority)
-					.ThenBy(p=>(p.SimulationState != null 
-					             && p.SimulationState.InstructionEnumerator != null 
-					             && p.SimulationState.InstructionEnumerator.Current != null)
+					.ThenBy(p=>(p.SimulationState != null && p.SimulationState.InstructionEnumerator != null && p.SimulationState.InstructionEnumerator.Current != null)
 					         ?p.SimulationState.InstructionEnumerator.Current.Priority
 					         :Priority.Medium)
-					.ThenBy(p=>p.InstanceIndex);
+                    .ThenBy(p=>(p.SimulationState != null && p.SimulationState.InstructionEnumerator != null && p.SimulationState.InstructionEnumerator.Current != null)
+					         ?p.SimulationState.InstructionEnumerator.Current.RaisedInTimePeriod
+					         :timePeriod)
+                    .ThenBy(p=>p.InstanceIndex);
 
 			ProcessesRemainingThisTimePeriod = new Queue<Process>();
 			foreach(var process in processesInPriorityOrder){
@@ -152,11 +152,18 @@ namespace NSimulate
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NSimulate.SimulationContext"/> class.
 		/// </summary>
-		public SimulationContext (bool isDefaultContextForProcess)
+        /// <param name="isDefaultContextForProcess">if true, this context will become the default for the process</param>
+        /// <param name="isDefaultContextForThread">if true, this context will become the default for the current thread</param>
+        public SimulationContext (bool isDefaultContextForProcess, bool isDefaultContextForThread = false)
 		{
 			if (isDefaultContextForProcess)
 			{
 				_current = this;
+			}
+        
+           	if (isDefaultContextForThread)
+			{
+				_currentForThread = this;
 			}
 		}
 
@@ -256,9 +263,14 @@ namespace NSimulate
 		/// </remarks>
 		public void Dispose()
 		{
-			if (SimulationContext.Current == this)
+			if (_current == this)
 			{
-				SimulationContext.Current = null;
+				_current = null;
+			}
+
+			if (_currentForThread == this)
+			{
+				_currentForThread = null;
 			}
 		}
         
