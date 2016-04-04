@@ -3,33 +3,33 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.5.2": {
-      "NSimulate/0.91.0": {
+      "NSimulate/0.92.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2"
       }
     },
     ".NETFramework,Version=v4.5.2/win7-x64": {
-      "NSimulate/0.91.0": {
+      "NSimulate/0.92.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2"
       }
     },
     ".NETFramework,Version=v4.5.2/win7-x86": {
-      "NSimulate/0.91.0": {
+      "NSimulate/0.92.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2"
       }
     }
   },
   "libraries": {
-    "NSimulate/0.91.0": {
+    "NSimulate/0.92.0": {
       "type": "project",
       "path": "../NSimulate/project.json"
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "NSimulate >= 0.91.0"
+      "NSimulate >= 0.92.0"
     ],
     ".NETFramework,Version=v4.5.2": [
       "System.Collections",

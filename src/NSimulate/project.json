@@ -1,5 +1,5 @@
 {
-    "version": "0.91.0-*",
+    "version": "0.92.0-*",
     "authors": ["Phillip Pettit"],
 	"description": "NSimulate is a .NET library written in C# that enables the development of discrent-event simulations. The library enables the modelling of processes, scheduled activities, notifications and resources.",
 	"copyright": "Phillip Pettit 2012-2016",

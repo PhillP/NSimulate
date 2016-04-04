@@ -1,11 +1,11 @@
 {
-    "version": "0.91.0-*",
+    "version": "0.92.0-*",
     "compilationOptions": {
         "emitEntryPoint": true
     },
 
     "dependencies": {
-        "NSimulate": "0.91.0"
+        "NSimulate": "0.92.0"
     },
 
     "frameworks": {
